@@ -26,6 +26,7 @@ function isValidEmail(email) {
 
 //Check required fields
 function checkRequired(inputArr){
+  let isRequired = false;
   inputArr.forEach(function(input){
     if(input.value.trim() === '') {
       showError(input, `${getFieldName(input)} is required`);
@@ -34,6 +35,7 @@ function checkRequired(inputArr){
       showSuccess(input);
     }
   });
+  return isRequired;
 }
 
 //Check input length
