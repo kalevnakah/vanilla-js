@@ -19,9 +19,13 @@ function showSuccess(input) {
 }
 
 //Check email is valid
-function isValidEmail(email) {
-  const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
-  return pattern.test(String(email).toLowerCase()); 
+function checkEmail(input) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (re.test(input.value.trim())) {
+    showSuccess(input);
+  } else {
+    showError(input, 'Alias is not valid');
+  }
 }
 
 //Check required fields
@@ -55,6 +59,12 @@ function checkLength(input, min, max){
   }
 }
 
+//Check passwords match
+function checkKeyCodesMatch(input1, input2) {
+  if(input1.value !== input2.value) {
+    showError(input2, 'KeyCodes do not match');
+  }
+}
 
 // Get fieldname
 function getFieldName(input) {
@@ -68,5 +78,7 @@ prisonCell.addEventListener('submit', function(e) {
   checkRequired([prisonerId, alias, keyCode, keyCode2]);
   checkLength(prisonerId, 3, 15);
   checkLength(keyCode, 6, 25);
+  checkEmail(alias);
+  checkKeyCodesMatch(keyCode, keyCode2);
   console.log(prisonerId.value);
 });
