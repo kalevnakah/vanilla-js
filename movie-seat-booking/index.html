@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Drive In Movie Booking</title>
+</head>
+<body>
+  <div class="show-container">
+    <label>Pick a show:</label>
+    <select id="show">
+      <option value="10">War Games ($10)</option>
+      <option value="12">Hackers ($12)</option>
+      <option value="8">Antitrust ($8)</option>
+      <option value="9">Reboot ($9)</option>
+    </select>
+  </div>
+
+  <ul class="hud">
+    <li>
+      <div class="parkingspot"></div>
+    </li>
+    <li>
+      <div class="picked"></div>
+    </li>
+    <li>
+      <div class="reserved"></div>
+    </li>
+  
+    <div class="parkinglot">
+      <div class="whitewall"></div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot reserved"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+      <div class="strip">
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot reserved"></div>
+        <div class="parkingspot"></div>
+        <div class="parkingspot"></div>
+      </div>
+    </div>
+
+    <p class="words">You have reserved <span id="spotcount">0</span> parking spots for a total of $<span id="sumcost">0</span></p>
+  <script src="script.js"></script>
+</body>
+</html>
