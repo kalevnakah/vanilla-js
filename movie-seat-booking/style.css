@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: darkslategrey;
+  color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+.show-container {
+  margin: 20px 0;
+}
+
+.show-container select {
+  background-color: antiquewhite;
+  border: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  padding: 5px 15px 5px 15px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.parkingspot {
+  background-color: yellow;
+  height: 15px;
+  width: 10px;
+  margin: 3px;
+  border-radius: 2px;
+}
+
