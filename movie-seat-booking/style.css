@@ -40,3 +40,30 @@ body {
   border-radius: 2px;
 }
 
+.parkingspot.picked {
+  background-color: green;
+}
+
+.parkingspot.reserved {
+  background-color: red;
+}
+
+.strip {
+  display: flex;
+}
+
+.strip:nth-of-type(3) {
+  margin-bottom: 18px;
+}
+
+.strip:nth-of-type(5) {
+  margin-bottom: 18px;
+}
+
+.strip:nth-of-type(7) {
+  margin-bottom: 18px;
+}
+
+.strip:nth-of-type(9) {
+  margin-bottom: 18px;
+}
