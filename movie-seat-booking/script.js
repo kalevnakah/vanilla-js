@@ -9,7 +9,13 @@ let showPrice = +showSelect.value;
 // Update sumcost and sumcount
 function updatePickedCount() {
   const pickedSpots = document.querySelectorAll('.strip .parkingspot.picked');
+
+  const pickedSpotsIndex = [...pickedSpots].map(spot => [...parkingspots].indexOf(spot));
+
+  console.log(pickedSpotsIndex);
+
   const pickedSpotsCount = pickedSpots.length;
+  
   spotcount.innerText = pickedSpotsCount;
   sumcost.innerText = pickedSpotsCount * showPrice;
 }
