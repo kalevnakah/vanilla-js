@@ -21,7 +21,7 @@ h1 {
 
 .whiteboard {
   cursor: pointer;
-  width: 50%;
+  width: 60%;
   background-color: #000 !important;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -30,12 +30,41 @@ h1 {
 .remote {
   background-color: #333;
   color: #fff;
+  width: 60%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 10px;
+}
+
+.remote .but {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.remote .fa-play {
+  color: green;
+}
+
+.remote .fa-pause {
+  color: white;
+}
+
+.remote .fa-stop {
+  color: red;
+}
+
+.remote .timecounter {
+  color: white;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.btn:focus {
+  outline: 0;
 }
 
 @media (max-width: 800px) {
