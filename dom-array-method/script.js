@@ -1,5 +1,5 @@
-const main = document.getElementById('box');
-const addPersonBtn = document.getElementById('add-person');
+const thingHolder = document.getElementById('thing');
+const addPersonBtn = document.getElementById('add_person');
 const twoTimesBtn = document.getElementById('times-two');
 const filterMillBtn = document.getElementById('filter-mill');
 const organizeBtn = document.getElementById('organize');
@@ -13,7 +13,47 @@ getRandomPerson();
 
 // fetch random user and add money
 async function getRandomPerson() {
-  const res = await fetch('https://randomuser.me/api');
-  const data = await res.json();
-  console.log(data);
+  const fruit = await fetch('https://randomuser.me/api');
+  const profile = await fruit.json();
+
+  const person = profile.results[0];
+
+  const newPerson = {
+    handle: `${person.name.first} ${person.name.last}`,
+    worth: Math.floor(Math.random() * 1000000),
+  };
+
+  addStuff(newPerson);
+
+  console.log(newPerson);
 }
+
+// Add new obj to data arr
+function addStuff(thing) {
+  allTheThings.push(thing);
+
+  addToDOM();
+}
+
+//Update DOM
+function addToDOM(providedThing = allTheThings) {
+  //clear main div
+  thingHolder.innerHTML = '<h2><strong>Person</strong> Wealth</h2>';
+
+  providedThing.forEach((person) => {
+    const elephant = document.createElement('div');
+    elephant.classList.add('pplz');
+    elephant.innerHTML = `<strong>${person.handle}</strong> ${formatCurrency(
+      person.worth
+    )}`;
+    thingHolder.appendChild(elephant);
+  });
+}
+
+// Format number as money - https://stackoverflow.com/questions/149055/how-to-format-numbers-as-currency-string
+function formatCurrency(digits) {
+  return '$' + digits.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+// Event listers
+addPersonBtn.addEventListener('click', getRandomPerson);
