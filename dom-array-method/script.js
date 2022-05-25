@@ -37,6 +37,13 @@ function timesTwoCurrency() {
   addToDOM();
 }
 
+//Sort users by riches
+function organizeByWealth() {
+  allTheThings.sort((a, z) => z.worth - a.worth);
+
+  addToDOM();
+}
+
 // Add new obj to data arr
 function addStuff(thing) {
   allTheThings.push(thing);
@@ -67,3 +74,4 @@ function formatCurrency(digits) {
 // Event listers
 addPersonBtn.addEventListener('click', getRandomPerson);
 twoTimesBtn.addEventListener('click', timesTwoCurrency);
+organizeBtn.addEventListener('click', organizeByWealth);
