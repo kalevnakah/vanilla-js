@@ -53,6 +53,19 @@ function filterByMill() {
   addToDOM();
 }
 
+//Total up the value of all peoples
+function totalAllTheMoney() {
+  const allTheMoney = allTheThings.reduce(
+    (sum, awesomePerson) => (sum += awesomePerson.worth),
+    0
+  );
+
+  const totalEl = document.createElement('div');
+  totalEl.innerHTML = `<h3>Total Monies: <strong>
+    ${formatCurrency(allTheMoney)}</strong></h3>`;
+  thing.appendChild(totalEl);
+}
+
 // Add new obj to data arr
 function addStuff(thing) {
   allTheThings.push(thing);
@@ -85,3 +98,4 @@ addPersonBtn.addEventListener('click', getRandomPerson);
 twoTimesBtn.addEventListener('click', timesTwoCurrency);
 organizeBtn.addEventListener('click', organizeByWealth);
 filterMillBtn.addEventListener('click', filterByMill);
+totalMoneyBtn.addEventListener('click', totalAllTheMoney);
