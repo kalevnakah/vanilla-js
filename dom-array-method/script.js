@@ -28,6 +28,15 @@ async function getRandomPerson() {
   console.log(newPerson);
 }
 
+//Double everyone's money
+function timesTwoCurrency() {
+  allTheThings = allTheThings.map((user) => {
+    return { ...user, worth: user.worth * 2 };
+  });
+
+  addToDOM();
+}
+
 // Add new obj to data arr
 function addStuff(thing) {
   allTheThings.push(thing);
@@ -57,3 +66,4 @@ function formatCurrency(digits) {
 
 // Event listers
 addPersonBtn.addEventListener('click', getRandomPerson);
+twoTimesBtn.addEventListener('click', timesTwoCurrency);
