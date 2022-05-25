@@ -44,6 +44,15 @@ function organizeByWealth() {
   addToDOM();
 }
 
+//Filter by Millionaire
+function filterByMill() {
+  allTheThings = allTheThings.filter(
+    (coolPerson) => coolPerson.worth > 1000000
+  );
+
+  addToDOM();
+}
+
 // Add new obj to data arr
 function addStuff(thing) {
   allTheThings.push(thing);
@@ -75,3 +84,4 @@ function formatCurrency(digits) {
 addPersonBtn.addEventListener('click', getRandomPerson);
 twoTimesBtn.addEventListener('click', timesTwoCurrency);
 organizeBtn.addEventListener('click', organizeByWealth);
+filterMillBtn.addEventListener('click', filterByMill);
