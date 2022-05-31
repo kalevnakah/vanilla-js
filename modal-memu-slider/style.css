@@ -3,7 +3,7 @@
 :root {
   --modal-time: 1s;
   --primary-colour: #30336b;
-  --seconde-colour: ;
+  --seconde-colour: #be2edd;
 }
 
 * {
@@ -13,6 +13,12 @@
 body {
   font-family: 'Lato', 'sans-serif;';
   margin: 0;
+  transition: transform 0.3s ease;
+}
+
+body.show-slide {
+  /* Width of nav */
+  transform: translateX(200px);
 }
 
 nav {
@@ -81,7 +87,8 @@ header p {
   margin: 30px 0;
 }
 
-button, input[type='submit'] {
+button,
+input[type='submit'] {
   background-color: var(--seconde-colour);
   border: 0;
   border-radius: 5px;
@@ -95,14 +102,14 @@ button:focus {
 }
 
 .flip {
-  background-color: rgba(0, 0, 0, .3);
+  background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   top: 20px;
   left: 20px;
 }
 
 .call-btn {
-  padding 12px;
+  padding: 12px;
   font-size: 20xp;
 }
 
@@ -114,7 +121,7 @@ button:focus {
 }
 
 .yodal-box {
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0.6);
   display: none;
   position: fixed;
   top: 0;
@@ -123,17 +130,23 @@ button:focus {
   bottom: 0;
 }
 
+.yodal-box.reveal-yodal {
+  display: block;
+}
+
 .yodal {
   background-color: #fff;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
-  position:absolute;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
   overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 400px;
+  animation-name: yodalopen;
+  animation-duration: var(--modal-time);
 }
 
 .yodal-header {
@@ -151,11 +164,11 @@ button:focus {
   padding: 20px;
 }
 
-.yodal-form div{
+.yodal-form div {
   margin: 15px 0;
 }
 
-.yodal-label{
+.yodal-label {
   display: block;
   margin-bottom: 5px;
 }
@@ -173,3 +186,12 @@ button:focus {
   right: 0;
 }
 
+@keyframes yodalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

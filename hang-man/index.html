@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hangman</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Hangman</h1>
+    <p>Find the hidden meaning - Enter a letter</p>
+    <div class="fun-box">
+      <svg height="250" width="200" class="stickman-box">
+        <!-- Hang Pole -->
+        <line x1="60" y1="20" x2="140" y2="20" />
+        <line x1="140" y1="20" x2="140" y2="50" />
+        <line x1="60" y1="20" x2="60" y2="230" />
+        <line x1="20" y1="230" x2="100" y2="230" />
+
+        <!-- Head -->
+        <circle cx="140" cy="70" r="20" class="stickman-part" />
+
+        <!-- Body -->
+        <line x1="140" y1="90" x2="140" y2="150" class="stickman-part" />
+
+        <!-- Arms -->
+        <line x1="140" y1="120" x2="120" y2="100" class="stickman-part" />
+        <line x1="140" y1="120" x2="160" y2="100" class="stickman-part" />
+
+        <!-- Legs -->
+        <line x1="140" y1="150" x2="120" y2="180" class="stickman-part" />
+        <line x1="140" y1="150" x2="160" y2="180" class="stickman-part" />
+      </svg>
+
+      <div class="fail-char-box">
+        <div id="fail-char"></div>
+      </div>
+
+      <div class="logos" id="logos"></div>
+
+      <!-- Container for final message -->
+      <div class="show-box" id="show-box">
+        <div class="show">
+          <h2 id="end-msg"></h2>
+          <h3 id="end-msg-logo"></h3>
+          <button id="newgame">Play Again</button>
+        </div>
+      </div>
+    </div>
+    <!-- Notification -->
+    <div class="remind-box" id="remind-box">
+      <p>You have already entered ths</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
