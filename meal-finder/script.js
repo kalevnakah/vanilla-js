@@ -20,7 +20,6 @@ function findFood(e) {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${search}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         resultTitleEl.innerHTML = `<h2>Search results for '${search}':</h2>`;
 
         if (data.meals === null) {
@@ -47,5 +46,79 @@ function findFood(e) {
   }
 }
 
+//Fetch meal by ID
+function getFoodByNumber(foodID) {
+  fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodID}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const food = data.meals[0];
+
+      addFoodToDOM(food);
+    });
+}
+
+//Fetch random meal
+function mixerFood() {
+  //Clear Meals and Heading
+  foodEl.innerHTML = '';
+  resultTitleEl.innerHTML = '';
+
+  fetch('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then((res) => res.json())
+    .then((data) => {
+      const food = data.meals[0];
+
+      addFoodToDOM(food);
+    });
+}
+
+//Add meal to DOM
+function addFoodToDOM(food) {
+  const ingredients = [];
+
+  for (let i = 1; i <= 20; i++) {
+    if (food[`strIngredient${i}`]) {
+      ingredients.push(
+        `${food[`strIngredient${i}`]} - ${food[`strMeasure${i}`]}`
+      );
+    } else {
+      break;
+    }
+  }
+
+  singleFoodEl.innerHTML = `
+    <div class="main-meal">
+      <h1>${food.strMeal}</h1>
+      <img src="${food.strMealThumb}" alt="${food.strMeal}" />
+      <div class="main-meal-info">
+        ${food.strCategory ? `<p>${food.strCategory}<p>` : ''}
+        ${food.strArea ? `<p>${food.strArea}<p>` : ''}
+        </div>
+        <div class="main">
+          <p>${food.strInstructions}</p>
+          <h2>Ingredients</h2>
+          <ul>
+            ${ingredients.map((ing) => `<li>${ing}</li>`).join('')}
+          </ul>
+        </div>
+    </div>
+  `;
+}
+
 //Event listener
 sendEl.addEventListener('submit', findFood);
+mixerEl.addEventListener('click', mixerFood);
+
+foodEl.addEventListener('click', (e) => {
+  const foodInfo = e.path.find((item) => {
+    if (item.classList) {
+      return item.classList.contains('food-info');
+    } else {
+      return false;
+    }
+  });
+  if (foodInfo) {
+    const foodId = foodInfo.getAttribute('data-foodID');
+    getFoodByNumber(foodId);
+  }
+});
