@@ -54,6 +54,7 @@ function getFoodByNumber(foodID) {
       const food = data.meals[0];
 
       addFoodToDOM(food);
+      console.log(food);
     });
 }
 

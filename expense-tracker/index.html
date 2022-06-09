@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h2>Expense Tracker</h2>
+
+  <div class="box">
+    <h4>Your Balance</h4>
+    <h1 id="scale">$0.00</h1>
+
+    <div class="rev-cost-box">
+      <div>
+        <h4>Income</h4>
+        <p id="wealth-plus" class="wealth add">+0.00</p>
+      </div>
+      <div>
+        <h4>Expense</h4>
+        <p id="wealth-minus" class="wealth sub">+0.00</p>
+      </div>
+    </div>
+
+    <h3>History</h3>
+    <ul id="registry" class="registry">
+      <!-- <li class="minus">Cash <span>-$400</span><button class="remove">x</button></li> -->
+    </ul>
+
+    <h3>Add new transaction</h3>
+    <form id="fillable">
+      <div class="fillable-control">
+        <label for="trans-name">Text</label>
+        <input type="text" id="trans-name" placeholder="Enter text...">
+      </div>
+      <div class="fillable-control">
+        <label for="monies">Amount </br> (negative = expense, positive = income)</label>
+        <input type="number" id="monies" placeholder="Enter amount...">
+      </div>
+      <button class="push">Add Transaction</button>
+    </form>
+  </div>
+</body>
+</html>
