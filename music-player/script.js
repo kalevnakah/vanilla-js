@@ -1,6 +1,6 @@
 const musicBoxEl = document.getElementById('music-box');
 const goBtnEl = document.getElementById('go');
-const backBtnEl = document.getElementById('back');
+const backBtnEl = document.getElementById('back-btn');
 const forwardBtnEl = document.getElementById('forward');
 
 const musicEl = document.getElementById('music');
@@ -56,6 +56,44 @@ function pauseTrack() {
   musicEl.pause();
 }
 
+// Previous Track
+function backTrack() {
+  trackIndex--;
+  if (trackIndex < 0) {
+    trackIndex = tracks.length - 1;
+  }
+
+  insertTrack(tracks[trackIndex]);
+  playTrack();
+}
+
+// Next Track
+function nextTrack() {
+  trackIndex++;
+  if (trackIndex > tracks.length - 1) {
+    trackIndex = 0;
+  }
+
+  insertTrack(tracks[trackIndex]);
+  playTrack();
+}
+
+// Update Slider Bar
+function updateSlider(e) {
+  const { duration, currentTime } = e.target;
+  const sliderPercent = (currentTime / duration) * 100;
+  sliderEl.style.width = `${sliderPercent}%`;
+}
+
+// Set the slider bar
+function setSlider(e) {
+  const width = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = musicEl.duration;
+
+  musicEl.currentTime = (clickX / width) * duration;
+}
+
 // Event Listeners
 goBtnEl.addEventListener('click', () => {
   const isRunning = musicBoxEl.classList.contains('running');
@@ -66,3 +104,16 @@ goBtnEl.addEventListener('click', () => {
     playTrack();
   }
 });
+
+// Change Track
+backBtnEl.addEventListener('click', backTrack);
+forwardBtnEl.addEventListener('click', nextTrack);
+
+// Time/Track update
+musicEl.addEventListener('timeupdate', updateSlider);
+
+// Click on slider
+sliderBoxEl.addEventListener('click', setSlider);
+
+// Track Ends
+musicEl.addEventListener('ended', nextTrack);
