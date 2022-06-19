@@ -1,8 +1,8 @@
 const pegBox = document.getElementById('peg-box');
-const fireUp = document.querySelector('fireup');
+const fireUp = document.querySelector('.fireup');
 const filter = document.getElementById('filter');
 
-let limit = 3;
+let limit = 5;
 let page = 1;
 
 // Fetch posts from API
@@ -35,5 +35,27 @@ async function revealPegs() {
   });
 }
 
+// Show loader & Fetch more posts
+function showFireup() {
+  fireUp.classList.add('reveal');
+
+  setTimeout(() => {
+    fireUp.classList.remove('reveal');
+
+    setTimeout(() => {
+      page++;
+      revealPegs();
+    }, 300);
+  }, 1000);
+}
+
 // Show initial posts
 revealPegs();
+
+window.addEventListener('scroll', () => {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+  if (scrollTop + clientHeight >= scrollHeight - 5) {
+    showFireup();
+  }
+});
