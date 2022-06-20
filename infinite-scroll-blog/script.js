@@ -27,7 +27,7 @@ async function revealPegs() {
     <div class="index">${peg.id}</div>
     <div class="peg-data">
       <h2 class="peg-title">${peg.title}</h2>
-      <p class="post-body">${peg.body}</p>
+      <p class="peg-body">${peg.body}</p>
     </div>
     `;
 
@@ -49,6 +49,23 @@ function showFireup() {
   }, 1000);
 }
 
+// Filter posts
+function siftPegs(e) {
+  const term = e.target.value.toUpperCase();
+  const pegs = document.querySelectorAll('.peg');
+
+  pegs.forEach((peg) => {
+    const title = peg.querySelector('.peg-title').innerText.toUpperCase();
+    const body = peg.querySelector('.peg-body').innerText.toUpperCase();
+
+    if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
+      peg.style.display = 'flex';
+    } else {
+      peg.style.display = 'none';
+    }
+  });
+}
+
 // Show initial posts
 revealPegs();
 
@@ -59,3 +76,5 @@ window.addEventListener('scroll', () => {
     showFireup();
   }
 });
+
+filter.addEventListener('input', siftPegs);
