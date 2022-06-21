@@ -64,7 +64,7 @@ function createBox(item) {
 
   const { image, text } = item;
 
-  box.classList.add('box');
+  box.classList.add('frame');
   box.innerHTML = `
     <img src="${image}" alt="${text}" />
     <p class="data">${text}</p>
