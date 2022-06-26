@@ -39,7 +39,7 @@ function showResults(info) {
      ${info.data
        .map(
          (song) => `<li>
-      <span><strong>${song.artist.name}</strong> - ${song.title}<span>
+      <span><strong>${song.artist.name}</strong> - ${song.title}</span>
       <button class="butt" data-artist="${song.artist.name}" data-songtitle="${song.title}">Get Song Lyrics</button>
     </li>`
        )
@@ -51,13 +51,13 @@ function showResults(info) {
     extra.innerHTML = `
       ${
         info.prev
-          ? `<button class="butt" onlclick="getExtraSongs
-      ('${info.prev}')">Prev</button>`
+          ? `<button class="butt" onclick="getExtraSongs('${info.prev}')
+          ">Prev</button>`
           : ''
       }
       ${
         info.next
-          ? `<button class="butt" onlclick="getExtraSongs
+          ? `<button class="butt" onclick="getExtraSongs
       ('${info.next}')">Next</button>`
           : ''
       }
@@ -69,11 +69,24 @@ function showResults(info) {
 
 // Get next or previous songs
 async function getExtraSongs(url) {
-  console.log(data);
   const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
   const data = await res.json();
 
   showResults(data);
+}
+
+// Get lyrics for song
+async function getLyrics(artist, songTitle) {
+  const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+  const data = await res.json();
+
+  const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
+
+  results.innerHTML = `<h2><strong>${artist}<strong> - 
+  ${songTitle}</h2>
+  <span>${lyrics}</span>`;
+
+  extra.innerHTML = '';
 }
 
 // Event Listeners
@@ -86,5 +99,17 @@ formSearch.addEventListener('submit', (e) => {
     alert('Please type in a search term');
   } else {
     searchMusic(searchText);
+  }
+});
+
+// Get lyrics button click
+results.addEventListener('click', (e) => {
+  const clickedEl = e.target;
+
+  if (clickedEl.tagName === 'BUTTON') {
+    const artist = clickedEl.getAttribute('data-artist');
+    const songtitle = clickedEl.getAttribute('data-songtitle');
+
+    getLyrics(artist, songtitle);
   }
 });
