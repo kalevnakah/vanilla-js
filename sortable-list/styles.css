@@ -29,7 +29,7 @@ body {
 }
 
 .graggable-list li {
-  background-color: #fff;
+  background: #fff;
   display: flex;
   flex: 1;
 }
@@ -50,7 +50,6 @@ body {
 
 .graggable-list li.over .draggable {
   background-color: #eaeaea;
-  z-index: 2;
 }
 
 .graggable-list .com-name {

@@ -83,6 +83,21 @@ function swapComs(fromCom, toCom) {
   listCommands[toCom].appendChild(comOne);
 }
 
+// Check the order of the list items
+function checkOrder() {
+  listCommands.forEach((listCom, index) => {
+    const comName = listCom.querySelector('.draggable').innerText.trim();
+
+    if (comName !== commandments[index]) {
+      listCom.classList.add('wrong');
+    } else {
+      listCom.classList.remove('wrong');
+      listCom.classList.add('right');
+    }
+  });
+}
+
+// Event Listners
 function addEventListeners() {
   const draggables = document.querySelectorAll('.draggable');
   const dragList = document.querySelectorAll('.graggable-list li');
@@ -98,3 +113,5 @@ function addEventListeners() {
     i.addEventListener('dragleave', dragLeave);
   });
 }
+
+check.addEventListener('click', checkOrder);
