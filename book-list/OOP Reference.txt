@@ -1,0 +1,66 @@
+ES5....
+
+Object Literal =  { Key: Value, Key: function }
+
+Constructor == Same as a class with a Constructor
+Constructor === Function (UpperCase){}
+  Keys === this.key, 
+           this.fun = function();
+
+Instantiate == Create a unique copy of the object.
+Instantiate === const obj = new Constructor(){};
+
+Prototypes == Keys that are not used with all objects. 
+               Usually functions.
+Prototypes === Object.prototype.fun = function(){};
+               works with "this" key word.
+
+Inheritance == Same as a subclass, but is missing prototypes from parent.
+Inheritance === Constructor function with Object.call(this, parent parameters);
+Inheritance === 
+
+Inherited Prototypes == Object.Create function. Subclasses automatically include this.
+Inherited Prototypes === InheritedObject.Prototype =  Object.Create(ParentObject.prototype)
+
+Prototype without Inherited constructor === Same as subclass
+Prototype without Inherited constructor == InheritedObject.prototype.constructor = InheritedObject
+
+Object.Create == Another way to create a class.
+Object.Create === parentObject = Object.create(object literal)
+                  parentObject.key = value;
+                  or
+                  key: { value: 'value'}
+
+ES6
+
+Class === Same as object but with a constructor function instead parameters. Keys not in the constructor are prototypes.
+class == Class ParentObject {
+            constructor(key1,key2,key3){
+              this.key3 = key
+            }
+            //Prototypes
+         }
+
+Instantiate == Same as ES5
+
+Static == Keys in a class that don't require the class to be Instantiated.
+Static ===  static key(){
+              return 'something'
+            }
+            OBJECT.key();
+
+Subclasses == AKA: "extends".Same as an Inherited Class. Automatically includes prototypes. Super is the same as call function.
+Subclasses === class InheritedObject extends ParentObject {
+                  constructor(key1, key2, key3, key4) {
+                    super(key1, key2, key3); 
+                    this.key4 = key4;
+                  }
+               }
+
+
+
+          
+
+
+               
+
